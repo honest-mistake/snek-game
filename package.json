@@ -1,0 +1,19 @@
+{
+  "name": "snek-game",
+  "version": "1.0.0",
+  "description": "a html5 canvas implementation of snake",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/honest-mistake/snek-game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/honest-mistake/snek-game/issues"
+  },
+  "homepage": "https://github.com/honest-mistake/snek-game#readme"
+}
