@@ -1,6 +1,10 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+
+const resolve = path.resolve.bind(null, __dirname);
+const buildPath = resolve('build');
 
 module.exports = {
     mode: process.env.NODE_ENV || 'development',
@@ -11,7 +15,7 @@ module.exports = {
     },
     output: {
         filename: 'main.js',
-        path: path.resolve(__dirname, 'build')
+        path: buildPath
     },
     module: {
         rules: [
@@ -52,9 +56,22 @@ module.exports = {
         ]
     },
     plugins: [
+        new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: 'main.css'
         }),
-        new CleanWebpackPlugin()
-    ]
+        new CopyPlugin({
+            patterns: [
+                {from: resolve('src/html/index.html'), to: buildPath}
+            ]
+        })
+    ],
+    devServer: {
+        contentBase: buildPath,
+        port: 9000,
+        hot: true,
+        open: {
+            apps: ['Google Chrome', '---incognito']
+        }
+    }
 };
