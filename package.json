@@ -4,7 +4,9 @@
   "description": "a html5 canvas implementation of snake",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --config ./webpack.config.js",
+    "start": "npm run-script build -- --watch",
+    "prod": "NODE_ENV=production npm run-script build"
   },
   "repository": {
     "type": "git",
